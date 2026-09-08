@@ -1,0 +1,314 @@
+/* Hoja de estilos externa de: Ejercicio 5 */
+
+:root {
+  --primary: #fff;
+  --secondary: #ffffff;
+  --accent: #ffe605;
+  --title: #dbdbdb;
+  --background: linear-gradient(245deg, #f1f1f1, #000000);
+  --background-inverso: linear-gradient(350deg, #303030, #f0efef);
+  --card-bg: rgba(128, 9, 9, 0.603);
+  --card-bg-hov: rgba(124, 21, 21, 0.877);
+  --radius: 8px;
+  --radius-big: 12px;
+  --shadow: 0 0px 46px rgba(240, 189, 189, 0.692);
+  --transition: all .4s ease-in-out;
+  --font-family: 'Poppins', sans-serif;
+
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--background);
+  color: var(--secondary);
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  background: url(../img/bg-music.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+header {
+  height: 15vh;
+  padding: 2rem auto;
+  padding-bottom: 6rem;
+  align-content: center;
+  background: url(../img/bg-wave.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: .88;
+
+}
+
+.tienda-container {
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  color: var(--title);
+  font-size: 5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.logo {
+  height: 5vw;
+  width: auto;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem;
+}
+
+.producto-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  min-width: 15vw;
+}
+
+.producto-card:hover {
+  background: var(--card-bg-hov);
+  transform: translateY(-5px);
+  transform: scale(1.01);
+  box-shadow: 0 1px 24px rgba(248, 0, 0, 0.432);
+}
+
+.producto-card:hover h4 {
+  color: #b4f8cb;
+  text-shadow: #333 2px 2px 5px;
+}
+
+.producto-image {
+  height: 300px;
+  width: auto;
+  background-color: #e0e0e0;
+  background-size: contain;
+  background-position: center;
+}
+
+.producto-info {
+  padding: 1.5rem;
+}
+
+.producto-titulo {
+  font-size: 1.4rem;
+  margin: 10px 0.5rem;
+  color: #ece6e6;
+  text-align: center;
+}
+
+.producto-precio {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #b4f8cb00;
+  margin-bottom: 1rem;
+  text-shadow: #33333300 2px 2px 5px;
+  text-align: center;
+}
+
+.producto-descripcion {
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.compra-btn {
+  background: var(--background);
+  color: var(--secondary);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.compra-btn:hover {
+  background: var(--background-inverso);
+}
+
+/* Formulario de pago */
+.pago-form-container {
+  display: none;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.pago-form h2 {
+  color: var(--accent);
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-grupo {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.submit-pago {
+  background: var(--background);
+  color: var(--primary);
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  transition: var(--transition);
+}
+
+.submit-pago:hover {
+  background: var(--background-inverso);
+}
+
+.gracias {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--accent), #c9a33b);
+  color: var(--primary);
+  border-radius: var(--radius);
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.obligatorio {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.ml-3 {
+  margin-right: 4%;
+}
+
+footer {
+  background-color: #2f2831d7;
+  /* min-height: 10vh; */
+  padding: 1%;
+  align-content: center;
+  text-align: center;
+  transition: var(--transition);
+}
+
+footer:hover {
+  background-color: #2f2831f5;
+  box-shadow: 0 0 65px #f0a7ff8f;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+}
+
+.social {
+  width: 50px;
+  height: 50px;
+  background-image: url(../../img/git_circl.png);
+  filter: drop-shadow(0 0 20px rgba(228, 168, 252, 0.918));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: auto;
+}
+
+.social:hover {
+  background-image: url(../../img/git_circl.gif);
+  filter: drop-shadow(0 0 40px rgba(232, 175, 255, 0.959));
+}
+
+/* Adaptación de estilo responsivo */
+@media (max-width: 1024px) {
+
+  body {
+    line-height: 1.5;
+    font-size: 1rem;
+    background: url(../img/bg-colors.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  h1 {
+    line-height: .8;
+    font-size: 3.5rem;
+  }
+
+  header {
+    height: 55vh;
+    opacity: .88;
+  }
+}
+
+@media (max-width: 600px) {
+
+  body {
+    line-height: 1.5;
+    font-size: 1rem;
+    background: url(../img/bg-eq-wave.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  h1 {
+    line-height: .8;
+    font-size: 1.8rem;
+  }
+
+  header {
+    height: 55vh;
+    opacity: .88;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Curso-JS | Ejercicio 3</title>
+    <meta name="author" content="𝓓𝓢𝓮𝓿𝓲𝓵𝓵𝓪𝓟𝓻𝓸𝓰 © ">
+    <meta name="artist" content="ᗪᔕᵉᵛⁱˡˡᵃᑭʳᵒᵍ">
+    <meta name="url" content="https://github.com/dsevillaprog">
+    <meta name="instrument" content="🄱 🄰 🅂 🄷 + 🄷 🆃 🄼 🅻  & 🄲 🆂 🅂 ">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../img/logo-js.png">
+</head>
+
+<body>
+    <header>
+        <h1 id="titulo">JavaScript Ejercicio 3</h1>
+        <p class="slogan">Formulario de Registro</p>
+    </header>
+    <main>
+        <div class="container">
+            <div class="formulario">
+                <h2 class="padd-3">Suscríbete al Boletín</h2>
+                <form action="#" method="post">
+                    <div>
+                        <label for="nombre">Nombre: </label>
+                    </div>
+                    <div>
+                        <input class="campos" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div>
+                        <label for="email">Correo Electrónico: </label>
+                    </div>
+                    <div>
+                        <input class="campos" type="email" id="email" name="email" placeholder="ejemplo@correo.com"
+                            required>
+                    </div>
+                    <div>
+                        <p class="padd-t-3"><input type="checkbox" name="terminos" required>
+                            Acepto los términos y condiciones</p>
+                    </div>
+                    <button type="submit" onclick="validarEmail(email)">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <div class="copyrigth">
+            <p><a href="../../index.html">[Índice]</a></p>
+            <br>
+            <p id="a_inicio"><a target="_blank" href="https://github.com/dsevillaprog">𝔻𝕊𝕖𝕧𝕚𝕝𝕝𝕒ℙ𝕣𝕠𝕘 © </a>
+                2025 Todos los derechos reservados<a href="#titulo"> ⌂ </a></p>
+        </div>
+    </footer>
+    <script>
+        function validarEmail(email) {
+            // Expresión regular para validar un correo electrónico
+            const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return regex.test(email);
+        }
+        const email = "js@example.com";
+
+        if (validarEmail(email)) {
+            // Mensaje por consola
+            console.log("✅️ El email es válido.");
+        } else {
+            console.log("❌️ El email no es válido.");
+        }
+
+    </script>
+</body>
+
+</html>

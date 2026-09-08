@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ᔕ☉⋓ᑎᗪᔕ</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(170deg, #f8f9fc 0%, #970707 150%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(221, 221, 221, 0.26);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      max-width: 400px;
+      width: 100%;
+      backdrop-filter: blur(8px);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 44px;
+      font-weight: 900;
+      font-size: 6rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      padding: 6px 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus {
+      box-shadow: 0 0 1px 3px #9c0f0fc4;
+    }
+
+    button {
+      background: rgb(139, 31, 31);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: rgb(69, 94, 42);
+    }
+  </style>
+</head>
+
+<body>
+  <h1><a href="../index.html">ᔕ☉⋓ᑎᗪᔕ</a></h1>
+  <div class="container">
+    <h2>✎ Crear sonido</h2>
+    <form method="POST" action="crear_sonido.php">
+
+      <label for="tipo">Tipo de sonido</label>
+      <select id="tipo" name="tipo" aria-placeholder="PIANO, ORGAN, ..." placeholder="PIANO" required>
+        <option value="piano">PIANO</option>
+        <option value="organ">ORGAN</option>
+        <option value="strings">STRINGS</option>
+        <option value="brass">BRASS</option>
+        <option value="drum">DRUM</option>
+        <option value="bass">BASS</option>
+        <option value="synth">SYNTH</option>
+        <option value="fx_guitar">FX_GUITAR</option>
+      </select>
+
+      <label for="numero">Número</label>
+      <!-- auto-añadir 01,02 con 1, 2 -->
+      <input type="number" id="numero" name="numero" pattern="[0-9]" minlength="2" maxlength="3" min='01'
+        placeholder="Pasar a: 02" required />
+
+
+      <!--
+      # ╭───────────────────────────────────────────────────────────────── Sample
+      # ╰───────────────── -->
+      <!-- if test $sample == Play() || Play_button -->
+      <label for="sample">📀️ Sample</label>
+      <input type="text" id="sample" name="sample" placeholder="Buscar por TIPO+NUM" />
+
+      <!-- Obtener de .lst tipo+num -->
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" minlength="3" placeholder="Obtener de .lst TIPO+NUM" required />
+
+      <label for="decay">🔉️ Decay</label>
+      <select id="decay" name="decay" aria-placeholder="low, mid, hig" placeholder="low, mid, hig">
+        <option value="">...</option>
+        <option value="low">low</option>
+        <option value="mid">mid</option>
+        <option value="hig">hig</option>
+      </select>
+
+      <label for="sustain">📢️ Sustain</label>
+      <select id="sustain" name="sustain" aria-placeholder="low, mid, hig, inf" placeholder="low, mid, hig, inf">
+        <option value="">...</option>
+        <option value="low">low</option>
+        <option value="mid">mid</option>
+        <option value="hig">hig</option>
+        <option value="inf">infinite</option>
+      </select>
+
+      <label for="vibrato">〽️ Vibrato</label>
+      <select id="vibrato" name="vibrato" aria-placeholder="low, mid, hig" placeholder="low, mid, hig">
+        <option value="">...</option>
+        <option value="low">low</option>
+        <option value="mid">mid</option>
+        <option value="hig">hig</option>
+      </select>
+
+      <!-- pasar a boolean -->
+      <label for="chords">🎹️ Chords</label>
+      <select id="chords" name="chords" aria-placeholder="yes, no" placeholder="yes, no">
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select>
+
+      <label for="melody">🎵️ Melody</label>
+      <select id="melody" name="melody" aria-placeholder="yes, no" placeholder="yes, no">
+        <option value="no">no</option>
+        <option value="yes">yes</option>
+        <!-- if true = form Tempo var? -->
+        <!-- <label for="tempvar">Tempo var?</label>
+      <select id="tempvar" name="tempvar"  aria-placeholder="yes, no" placeholder="yes, no">
+        <option value="yes">yes</option>
+        <option value="no">no</option>
+      </select> -->
+      </select>
+
+      <label for="sens">👉️ Sens</label>
+      <select id="sens" name="sens" aria-placeholder="low, mid, hig" placeholder="low, mid, hig">
+        <option value="">...</option>
+        <option value="low">low</option>
+        <option value="mid">mid</option>
+        <option value="hig">hig</option>
+      </select>
+
+      <label for="delay">⏩️ Delay</label>
+      <select id="delay" name="delay" aria-placeholder="low, mid, hig" placeholder="low, mid, hig">
+        <option value="">...</option>
+        <option value="low">low</option>
+        <option value="mid">mid</option>
+        <option value="hig">hig</option>
+      </select>
+
+      <label for="pedal">👞️ Pedal</label>
+      <select id="pedal" name="pedal" aria-placeholder="low, mid, hig" placeholder="low, mid, hig">
+        <option value="">...</option>
+        <option value="low">low</option>
+        <option value="mid">mid</option>
+        <option value="hig">hig</option>
+        <option value="inf">Infinite</option>
+      </select>
+
+
+      <label for="fxVib">🎚ᝰ FX Vibrato</label>
+      <select id="fxVib" name="fxVib" aria-placeholder="0-5" placeholder="0-5">
+        <option value="">...</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <label for="fxFil">🎚🎛 FX Filter</label>
+      <select id="fxFil" name="fxFil" aria-placeholder="0-5" placeholder="0-5">
+        <option value="">...</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <!--
+      # ╭───────────────────────────────────────────────────────────────── Atributos
+      # ╰───────────────── -->
+      <!-- ++Selección múltiple   -->
+      <!-- <form method="post" action="crear_sonido.php(getAtributos)">
+        <h3>𝄞 Atributos:</h3>
+        <label><input type="checkbox" name="atributos" value="FAV⭐️  ">FAV ⭐️ </label>
+        <label><input type="checkbox" name="atributos" value="REAL👑️  ">REAL 👑️ </label>
+        <label><input type="checkbox" name="atributos" value="EP⚡️🎹️  ">EP ⚡️🎹️ </label>
+        <label><input type="checkbox" name="atributos" value="PAD🎛️   ">PAD 🎛️ </label>
+        <label><input type="checkbox" name="atributos" value="Strings🎻️  ">Strings 🎻️ </label>
+        <label><input type="checkbox" name="atributos" value="Brass🎷️  ">Brass 🎷️ </label>
+        <label><input type="checkbox" name="atributos" value="Drum🥁️  ">Drum 🥁️ </label>
+        <label><input type="checkbox" name="atributos" value="Fx🎬️  ">Fx 🎬️ </label>
+        <label><input type="checkbox" name="atributos" value="Guitar🎸️  ">Guitar 🎸️ </label>
+        <label><input type="checkbox" name="atributos" value="Organ⛪️  ">Organ ⛪️ </label>
+        <label><input type="checkbox" name="atributos" value="Chord🎹️  ">Chord 🎹️ </label>
+        <label><input type="checkbox" name="atributos" value="Coros🎤️  ">Coros 🎤️ </label>
+        <label><input type="checkbox" name="atributos" value="Miau🐈️  ">Miau 🐈️ </label>
+        <label><input type="checkbox" name="atributos" value="Wahh👼️  ">Wahh 👼️ </label>
+        <label><input type="checkbox" name="atributos" value="Campana🔔️  ">Campana 🔔️ </label>
+        <label><input type="checkbox" name="atributos" value="PadFx〽️🎛️   ">PadFx 〽️🎛️ </label>
+        <label><input type="checkbox" name="atributos" value="Melody🎵️  ">Melody 🎵️ </label>
+        <label><input type="checkbox" name="atributos" value="Delay⏩️  ">Delay ⏩️ </label>
+        <label><input type="checkbox" name="atributos" value="BassFx💢️  ">BassFx 💢️ </label>
+        <label><input type="checkbox" name="atributos" value="Inverso🙃️  ">Inverso 🙃️ </label>
+        <label><input type="checkbox" name="atributos" value="Rebote⭕️  ">Rebote ⭕️ </label>
+        <label><input type="checkbox" name="atributos" value="Phaser🌀️  ">Phaser 🌀️ </label>
+        <label><input type="checkbox" name="atributos" value="Random🎲️  ">Random 🎲️ </label>
+        <label><input type="checkbox" name="atributos" value="Cresch🌊️  ">Cresch 🌊️ </label>
+        <label><input type="checkbox" name="atributos" value="Ataque💥️  ">Ataque 💥️ </label>
+        <label><input type="checkbox" name="atributos" value="PedDecay👣️  ">PedDecay 👣️ </label>
+        <label><input type="checkbox" name="atributos" value="Classic🎼️  ">Classic 🎼️ </label>
+        <label><input type="checkbox" name="atributos" value="House🏠️  ">House 🏠️ </label>
+        <label><input type="checkbox" name="atributos" value="Techno🎧️  ">Techno 🎧️ </label>
+        <label><input type="checkbox" name="atributos" value="Soul👻️  ">Soul 👻️ </label>
+        <label><input type="checkbox" name="atributos" value="Chill⛱️   ">Chill ⛱️ </label>
+        <label><input type="checkbox" name="atributos" value="Rock🤘️  ">Rock 🤘️ </label>
+        <label><input type="checkbox" name="atributos" value="Funk🎉️  ">Funk 🎉️ </label>
+        <label><input type="checkbox" name="atributos" value="Trap👽️  ">Trap 👽️ </label>
+        <label><input type="checkbox" name="atributos" value="LoFi📻️  ">LoFi 📻️ </label>
+        <label><input type="checkbox" name="atributos" value="Armonias☯️   ">Armonias ☯️ </label>
+        <label><input type="checkbox" name="atributos" value="Fantasia🦄️  ">Fantasia 🦄️ </label>
+        <label><input type="checkbox" name="atributos" value="Nature🌿️  ">Nature 🌿️ </label>
+        <label><input type="checkbox" name="atributos" value="Retro🕹️  ">Retro 🕹️ </label>
+        <label><input type="checkbox" name="atributos" value="Digital🤖️  ">Digital 🤖️ </label>
+        <label><input type="checkbox" name="atributos" value="Cine🎬️  ">Cine 🎬️ </label>
+        <label><input type="checkbox" name="atributos" value="S-Fly💻️  ">S-Fly 💻️ </label>
+        <button onclick="guardarAtributos()">Guardar Atributos</button>
+        <button type="reset">Limpiar</button>
+      </form> -->
+
+
+      <!--  
+      # ╭───────────────────────────────────────────────────────────────── Clases
+      # ╰───────────────── -->
+      <!-- ++Sacar de Atributos -->
+      <!-- <label for="clases">∞ Clases:</label> -->
+
+
+      <!--  
+      # ╭───────────────────────────────────────────────────────────────── Listas
+      # ╰───────────────── -->
+      <!-- Añadir a lista -->
+      <!-- <label for="lista">🗂 Lista:</label> -->
+
+      <button type="submit">
+        <h3>⟳ Guardar Sonido ⟳</h3>
+      </button>
+    </form>
+  </div>
+</body>
+
+</html>
