@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <!-- Índice del Curso de JavaScript: Ejemplos y Ejercicios del curso -->
+    <meta charset="UTF-8">
+    <title>Curso-JavaScript | Inicio del Curso de Formularios</title>
+    <meta name="author" content="𝔻𝕊𝕖𝕧𝕚𝕝𝕝𝕒ℙ𝕣𝕠𝕘 © ">
+    <meta name="artist" content="ᗪᔕᵉᵛⁱˡˡᵃᑭʳᵒᵍ">
+    <meta name="url" content="https://github.com/dsevillaprog">
+    <meta name="instrument" content="🄱 🄰 🅂 🄷 + 🄷 🆃 🄼 🅻  & 🄲 🆂 🅂 ">
+    <meta name="copyright" content="𝓓𝓢𝓮𝓿𝓲𝓵𝓵𝓪𝓟𝓻𝓸𝓰 © 2025 Todos los Derechos Reservados">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="icon" type="image/x-icon" href="img/logo-js.png">
+</head>
+
+<body>
+    <header id="arriba">
+        <h1 id="titulo-web">Bienvenido al Curso de JavaScript</h1>
+        <p class="subtitulo">Aprendiendo <a href="../CURSO-CSS/index.html">CSS, </a> <a
+                href="../CURSO-HTML/index.html">HTML</a> y <a href="#">JS</a></p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../CURSO-CSS/index.html">INICIO</a></li>
+            <li><a href="Ejercicio1/index.html">TWITCH-MUSIC</a></li>
+            <li><a href="Ejercicio2/index.html">DS-HARDWARE</a></li>
+            <li><a href="Ejercicio5/index.html">ᗪᔕ☉⋓ᑎᗪ</a></li>
+            <li><a href="Ejercicio6/index.html" title="Roli-Sounds.html">GO:KEYS</a></li>
+            <li><a href="../../BUSCADORES-WEB/BUSCADORES-WEB.html" target="_blank">🔍︎ BUSCADORES-WEB</a></li>
+        </ul>
+    </nav>
+    <section class="contenido">
+        <div class="head-logo">
+            <div class="head-img">
+                <img class="logo-css" src="img/logo-js-tr.png" alt="logo js">
+            </div>
+            <div class="head-txt">
+                <h1>JS (JavaScript)</h1>
+                <p>Los programas en este lenguaje se llaman <em>scripts</em>. Se pueden escribir directamente en el HTML
+                    de una página web y ejecutarse automáticamente a medida que se carga la página.</p>
+                <p>Los scripts se proporcionan y ejecutan como texto plano. No necesitan preparación especial o
+                    compilación para correr.</p>
+                <p>En este aspecto, JavaScript es muy diferente a otro lenguaje llamado <a
+                        href="https://es.wikipedia.org/wiki/Java_(lenguaje_de_programaci%C3%B3n)">Java</a>.</p>
+                <p>
+                    <span">¿Por qué se llama <u>Java</u>Script?</span>
+                </p>
+                <p>Cuando JavaScript fue creado, inicialmente tenía otro nombre: “LiveScript”. Pero Java era muy popular
+                    en ese momento, así que se decidió que el posicionamiento de un nuevo lenguaje como un “Hermano
+                    menor” de Java ayudaría.</p>
+                <p>Pero a medida que evolucionaba, JavaScript se convirtió en un lenguaje completamente independiente
+                    con su propia especificación llamada <a
+                        href="https://es.wikipedia.org/wiki/ECMAScript">ECMAScript</a>, y ahora no tiene ninguna
+                    relación con Java.</p>
+                <br>
+                <p>Hoy, JavaScript puede ejecutarse no solo en los navegadores, sino también en servidores o incluso en
+                    cualquier dispositivo que cuente con un programa especial llamado <a
+                        href="https://es.wikipedia.org/wiki/Int%C3%A9rprete_de_JavaScript">El motor o intérprete de
+                        JavaScript</a>.</p>
+                <p>El navegador tiene un motor embebido a veces llamado una “Máquina virtual de JavaScript”.</p>
+                <p>Diferentes motores tienen diferentes “nombres en clave”. Por ejemplo:</p>
+                <ul>
+                    <li><a href="https://es.wikipedia.org/wiki/Chrome_V8">V8</a> – en Chrome, Opera y Edge.</li>
+                    <li><a href="https://es.wikipedia.org/wiki/SpiderMonkey">SpiderMonkey</a> – en Firefox.</li>
+                    <li>…Existen otros nombres en clave como “Chakra” para IE , “JavaScriptCore”, “Nitro” y
+                        “SquirrelFish” para Safari, etc.</li>
+                </ul>
+                <p>Es bueno recordar estos términos porque son usados en artículos para desarrolladores en internet.
+                    También los usaremos. Por ejemplo, si “la característica X es soportada por V8”, entonces
+                    probablemente funciona en Chrome, Opera y Edge.</p>
+                <br>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <!-- Párrafos -->
+        <p id="P_uno">Párrafo_1 en UTF-8 para ver las eñes,con un identificador asignado= P_uno, con una palabra
+            <strong>resaltada</strong> y un<br> salto de línea forzado</p>
+        <p id="P_dos">Párrafo_2 contiene una palabra <strong
+                id="palabra">extre<wbr>madísima<wbr>mente<wbr>larga</strong> que se divide por <code>wbr</code> al
+            ampliar el navegador y tiene asignado el id=palabra</p>
+        <p>Click para modificar el Párrafo_1</p>
+        <button type="button"
+            onclick='document.getElementById("P_uno").innerHTML = "Cambia el párrafo_1 en base a su id=P_uno"'>Click
+            aquí!</button><br>
+        <p>Este botón <button type="button"
+                onclick="document.getElementById('P_dos').style.fontSize='25px'">Aumenta</button> el tamaño de letra en
+            P_dos</p>
+        <p>Y este <button type="button"
+                onclick="document.getElementById('P_dos').style.fontSize='10px'">Disminuye</button> el tamaño de letra
+            en P_dos</p>
+        <p>Y este <button type="button" onclick="document.getElementById('P_dos').style.fontSize=''">No tiene
+                asignado</button> el tamaño de letra en P_dos</p>
+        <p>Y este otro<button type="button" onmouseover="document.getElementById('P_dos').style.color='green'">Cambia el
+                color</button> en P_dos al pasar por encima</p>
+        <br>
+        <p>En este generamos una <button type="button" onclick="AlertFunction()">Alerta</button> mediante la función
+            AlertFunction().</p>
+        <script>
+            function AlertFunction() { alert('Alerta: Alerta generada mediante script'); }
+        </script>
+        <p id="demo"><button onclick="document.getElementById('demo').innerHTML=Date()">Ver Date</button></p>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <h4>Añadir links de todos los .html de la ruta a: index.html </h4>
+        <p> ⠀ - Busca recursivamente todos los archivos .html</p>
+        <p> ⠀ ⠀ └─ Los añade al final de index.html como links &#60;a> dentro de un &#60;li> y separados con &#60;br>
+        </p>
+        <p> ⠀ ⠀ └─ Los nombra como:' - Ejercicio 1', ' - Ejercicio 2', ...</p>
+        <pre class="code">
+    Ejemplo:
+            &#60;br>
+            &#60;li>&#60;a href="ruta/Ejemplo1/ejemplo1.html"> - Ejercicio 1&#60;/a>&#60;/li>
+            &#60;br>
+            &#60;li>&#60;a href="ruta/Ejemplo2/ejemplo2.html"> - Ejercicio 2&#60;/a>&#60;/li>
+
+    Código:
+            n=0
+            echo "" >> index.html
+            echo "&#60;!-- Inicio del script --&#62;" >> index.html
+            for i in $( sudo find $(pwd) -type f -iname "*.html" ); do
+                n=$((n+1))
+                echo "&#60;br&#62;" >> index.html
+                echo "&#60;li>&#60;a href=\"$i\"&#62; - Ejercicio $n&#60;/a&#62;&#60;/li>" >> index.html
+            done
+
+Copy:
+
+n=0; for i in $( sudo find $(pwd) -type f -iname "*.html" ); do n=$((n+1)); echo "&#60;br&#62;" >> index.html; echo "&#60;li>&#60;a href=\"$i\"&#62; - Ejercicio $n&#60;/a&#62;&#60;/li>" >> index.html; done</pre>
+    </section>
+    <aside>
+        <h2 class="mx-auto">JavaScript</h2>
+        <div>
+            <ul>
+                <li>
+                    <a href="Ejemplos/Ejemplo1.html">Ejemplo - 1⠀࿔⠀PetShop</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo2.html">Ejemplo - 2⠀࿔⠀col / justify</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo3.html">Ejemplo - 3⠀࿔⠀Botones</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo4.html">Ejemplo - 4⠀࿔⠀Imágenes</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo5.html">Ejemplo - 5⠀࿔⠀Tablas</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo6.html">Ejemplo - 6⠀࿔⠀Card-img</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo7.html">Ejemplo - 7⠀࿔⠀Web</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo8.html">Ejemplo - 8⠀࿔⠀nav</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo9.html">Ejemplo - 9⠀࿔⠀nav.dropdown</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo10.html">Ejemplo - 10⠀࿔⠀Carrusel</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo11.html">Ejemplo - 11⠀࿔⠀Form.</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo12.html">Ejemplo - 12⠀࿔⠀Form.suscripción</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo13.html">Ejemplo - 13⠀࿔⠀Form.registro</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo14.html">Ejemplo - 14⠀࿔⠀Form.encuesta</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo15.html">Ejemplo - 15⠀࿔⠀Form.reserva</a>
+                </li>
+                <li>
+                    <a href="Ejemplos/Ejemplo16.html">Ejemplo - 16⠀࿔⠀Form.compra</a>
+                </li>
+                <li>
+                    <a href="ejercicio7/index.html">Ejemplo - 17⠀࿔⠀Catálogo</a>
+                </li>
+                <li>
+                    <a href="ejercicio8/formulario_productos.html">Ejemplo - 18⠀࿔⠀Crear Producto</a>
+                </li>
+                <br>
+                <li>
+                    <p><a href="Ejercicio1/index.html">Ejercicio - 1⠀»⠀𝚃𝚠𝚒𝚝𝚌𝚑⧿𝙼𝚞𝚜𝚒𝚌</a></p>
+                </li>
+                <li>
+                    <p><a href="Ejercicio2/index.html">Ejercicio - 2⠀»⠀𝔻𝕊-ℍ𝕒𝕣𝕕𝕨𝕒𝕣𝕖</a></p>
+                </li>
+                <li>
+                    <p><a href="Ejercicio5/index.html">Ejercicio - 3⠀»⠀ᗪᔕ☉⋓ᑎᗪ</a></p>
+                </li>
+                <li>
+                    <p><a href="Ejercicio6/index.html">Ejercicio - 4⠀»⠀GO:KEYS</a></p>
+                </li>
+                <li>
+                    <p><a href="../../BUSCADORES-WEB/BUSCADORES-WEB.html" target="_blank">🔍︎ BUSCADORES-WEB</a></p>
+                </li>
+            </ul>
+            <br>
+            <h2>Recursos Web</h2>
+            <ul>
+                <br>
+                <li><a target="_blank" href="https://www.w3schools.com/html/default.asp">W3 Schools</a></li>
+                <li><a target="_blank" href="https://www.w3schools.com/tags/ref_html_browsersupport.asp">Tags W3</a>
+                </li>
+                <li><a target="_blank" href="https://www.toptal.com/designers/htmlarrows/symbols/">Símbolos_&copy</a>
+                </li>
+                <li><a target="_blank" href="https://lenguajecss.com/css/layout/display-css/">CSS_Esp</a></li>
+                <li><a target="_blank" href="https://aulaclic.es/index.htm">AulaClick</a></li>
+                <br>
+                <li><a target="_blank" href="https://color.adobe.com/es/">Adobe Color</a></li>
+                <li><a target="_blank" href="https://www.colorhunt.co/palettes/random">Paletas de Color</a></li>
+                <li><a target="_blank" href="https://www.colourlovers.com/">Paletas de Color</a></li>
+                <li><a target="_blank" href="https://rgbcolorcode.com/color/converter/">Color Converter</a></li>
+                <br>
+                <li><a target="_blank" href="https://studio.creativefabrica.com/vectorizer/">Vectorizer+Tools</a></li>
+                <li><a target="_blank" href="https://toppng.com/">Vector Images</a></li>
+                <li><a target="_blank" href="https://www.pngarts.com/">Vector Real-Images</a></li>
+                <li><a target="_blank" href="https://www.freepik.es">Vector Images</a></li>
+                <br>
+                <li><a target="_blank" href="https://imagemagick.org/">Imagemagick</a></li>
+                <li><a target="_blank" href="https://usage.imagemagick.org/">Imagemagick_use</a></li>
+                <li><a target="_blank"
+                        href="https://imagemagick.org/script/command-line-processing.php#option">Imagemagick_CLI</a>
+                </li>
+                <li><a target="_blank" href="https://watermark.imageonline.co/es/">Place Holder</a></li>
+                <br>
+                <li><a target="_blank" href="https://rss.bloople.net/">RSS iframe</a></li>
+                <li><a target="_blank" href="https://emojidb.org/">Iconos copy ©𖣠Ƥ𝓨</a></li>
+                <li><a target="_blank" href="https://fontawesome.com/">Fuentes 𝓙ota</a></li>
+                <li><a target="_blank" href="https://oldenglishfont.net/">Fuentes 🄵🅾🄽🆃🅂</a></li>
+                <li><a target="_blank" href="https://www.sonidosmp3gratis.com">MP3 Sounds ♫</a></li>
+                <li><a target="_blank" href="https://www.voicy.network/es">FX Sounds 📽</a></li>
+                <br>
+                <li><a target="_blank" href="https://flexboxfroggy.com/#es">🐸 Flex-box-Froggy 🐸</a></li>
+            </ul>
+        </div>
+    </aside>
+    <footer>
+        <div class="social">
+            <a target="_blank" href="https://github.com/dsevillaprog/"></a>
+        </div>
+        <p class="pie_pag"><a href="../CURSO-CSS/index.html">𝔻𝕊𝕖𝕧𝕚𝕝𝕝𝕒ℙ𝕣𝕠𝕘</a></p>
+        <p class="derechos"><strong>©&MediumSpace;2025&MediumSpace;</strong> Todos los derechos reservados&MediumSpace;&MediumSpace;</p>
+        <p id="fin"><a class="icon-up" href="#arriba">⠀ ⌂ ⠀</a></p>
+    </footer>
+</body>
+
+</html>

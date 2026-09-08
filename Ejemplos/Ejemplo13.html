@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curso-JS | Registro de Usuario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    fieldset {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-weight: bold;
+    }
+
+    .radio-group {
+      margin-top: 10px;
+    }
+
+    .radio-group label {
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: normal;
+    }
+
+    .checkbox-container {
+      margin-top: 20px;
+    }
+
+    .checkbox-container label {
+      font-weight: normal;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .mensaje-exito {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .mensaje-error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="../img/logo-js.png">
+</head>
+
+<body>
+  <div class="form-container">
+    <div id="mensajeExito" class="mensaje-exito">✅ ¡Registro realizado con éxito!</div>
+
+    <h2>Registro de Usuario</h2>
+    <form id="formRegistro">
+      <label for="usuario">Nombre de usuario:</label>
+      <input type="text" id="usuario" name="usuario" required placeholder="Ej: juan123" />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com" />
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" required minlength="6" placeholder="Mínimo 6 caracteres" />
+
+      <label for="confirmar">Confirmar contraseña:</label>
+      <input type="password" id="confirmar" name="confirmar" required placeholder="Repite tu contraseña" />
+      <div id="errorPass" class="mensaje-error"></div>
+
+      <fieldset>
+        <legend>Género</legend>
+        <div class="radio-group">
+          <label><input type="radio" name="genero" value="masculino" required /> Masculino</label>
+          <label><input type="radio" name="genero" value="femenino" /> Femenino</label>
+          <label><input type="radio" name="genero" value="otro" /> Otro</label>
+        </div>
+      </fieldset>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="terminos" name="terminos" required />
+        <label for="terminos">Acepto los términos y condiciones</label>
+      </div>
+
+      <button type="submit">Registrarse</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("formRegistro");
+    const mensajeExito = document.getElementById("mensajeExito");
+    const password = document.getElementById("password");
+    const confirmar = document.getElementById("confirmar");
+    const errorPass = document.getElementById("errorPass");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Detiene el envío por defecto
+
+      // Limpia el mensaje anterior
+      errorPass.textContent = "";
+      mensajeExito.style.display = "none";
+
+      // Validación de contraseñas
+      if (password.value !== confirmar.value) {
+        errorPass.textContent = "❌ Las contraseñas no coinciden.";
+        confirmar.focus();
+        return;
+      }
+
+      // Si todo es válido
+      mensajeExito.style.display = "block";
+      form.reset(); // Limpia los campos
+    });
+  </script>
+</body>
+
+</html>

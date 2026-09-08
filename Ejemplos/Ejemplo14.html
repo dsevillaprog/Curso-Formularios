@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- Crear cuenta en emailjs.com > crear servicio(add email) > crear plantilla jluismape@gmail.com -->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso-JS | Encuesta de Informática</title>
+  <style>
+    :root {
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --light: #f0f2f5;
+      --dark: #1e1e2f;
+      --success: #00c9a7;
+      --danger: #e63946;
+      --font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      color: var(--dark);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .encuesta-form {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .pregunta {
+      padding: 1.5rem;
+      background: var(--light);
+      border-left: 5px solid var(--primary);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: background 0.3s ease;
+    }
+
+    .pregunta:hover {
+      background: #e9ecef;
+    }
+
+    .pregunta h3 {
+      margin-top: 0;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .opciones {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .opcion {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #dee2e6;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .opcion:hover {
+      background: #f8f9fa;
+      border-color: var(--primary);
+    }
+
+    .opcion input {
+      margin-right: 10px;
+      accent-color: var(--primary);
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      margin-top: 2rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(45deg, var(--secondary), var(--primary));
+      transform: scale(1.02);
+    }
+
+    .obligatorio {
+      color: var(--danger);
+      font-weight: 500;
+    }
+
+    .gracias {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: var(--success);
+      color: #ffffff;
+      border-radius: 10px;
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 201, 167, 0.3);
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="../img/logo-js.png">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Encuesta de Informática</h1>
+    <form id="formencuesta" class="encuesta-form">
+      <!-- Pregunta 1 -->
+      <div class="pregunta">
+        <h3>1. ¿Qué lenguaje de programación prefieres? <span class="obligatorio">*</span></h3>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q1" value="JavaScript" required> JavaScript</label>
+          <label class="opcion"><input type="radio" name="q1" value="Python"> Python</label>
+          <label class="opcion"><input type="radio" name="q1" value="Java"> Java</label>
+          <label class="opcion"><input type="radio" name="q1" value="C#"> C#</label>
+          <label class="opcion"><input type="radio" name="q1" value="Otro"> Otro</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 2 -->
+      <div class="pregunta">
+        <h3>2. ¿Con qué frecuencia programas? <span class="obligatorio">*</span></h3>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q2" value="Diariamente" required> Diariamente</label>
+          <label class="opcion"><input type="radio" name="q2" value="Semanalmente"> Semanalmente</label>
+          <label class="opcion"><input type="radio" name="q2" value="Mensualmente"> Mensualmente</label>
+          <label class="opcion"><input type="radio" name="q2" value="Ocasionalmente"> Ocasionalmente</label>
+        </div>
+      </div>
+
+      <!-- Pregunta 3 -->
+      <div class="pregunta">
+        <h3>3. ¿Qué área de la informática te interesa más? <span class="obligatorio">*</span></h3>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="q3" value="Desarrollo Web" required> Desarrollo Web</label>
+          <label class="opcion"><input type="radio" name="q3" value="Inteligencia Artificial"> Inteligencia
+            Artificial</label>
+          <label class="opcion"><input type="radio" name="q3" value="Ciberseguridad"> Ciberseguridad</label>
+          <label class="opcion"><input type="radio" name="q3" value="Análisis de Datos"> Análisis de Datos</label>
+        </div>
+      </div>
+
+      <!-- Más Preguntas -->
+      <!-- ... -->
+
+      <button type="submit" class="submit-btn">Enviar Encuesta</button>
+    </form>
+
+    <div id="idgracias" class="gracias">
+      <h2>¡Gracias por participar!</h2>
+      <p>Tus respuestas han sido enviadas correctamente.</p>
+    </div>
+  </div>
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // Inicializar EmailJS con tu User ID
+    (function () {
+      emailjs.init('YOUR_USER_ID'); // Reemplaza con tu User ID de EmailJS
+    })();
+
+    document.getElementById('formencuesta').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Recopilar datos del formulario
+      const formData = new FormData(this);
+      const responses = {};
+
+      formData.forEach((value, key) => {
+        responses[key] = value;
+      });
+
+      // Enviar por EmailJS
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+        to_email: 'tuemail@example.com',
+        subject: 'Nueva encuesta de informática',
+        message: JSON.stringify(responses, null, 2)
+      })
+        .then(function (response) {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('formencuesta').style.display = 'none';
+          document.getElementById('idgracias').style.display = 'block';
+        }, function (error) {
+          console.log('FAILED...', error);
+          alert('Error al enviar la encuesta. Por favor, inténtalo de nuevo.');
+        });
+    });
+  </script>
+</body>
+
+</html>

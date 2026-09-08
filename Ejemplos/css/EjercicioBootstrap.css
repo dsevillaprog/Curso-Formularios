@@ -1,0 +1,36 @@
+/* Hoja de estilos externa de: EjercicioBootstrap */
+/* * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+} */
+
+:root {
+    --color-bg: #ffffff;
+    --color-cursos: #d0b09c64;
+    --color-benef: #c4fae294;
+    --color-clear: #ebebeb94;
+    --color-accent-hov: #cdc4b8;
+    --color-text: #222;
+    --color-txt: #fcf3ee;
+    --color-muted: #745e50dd;
+    --color-muted-hov: #9f8372dd;
+
+    --radius: 10px;
+    --radius-low: 4px;
+
+    --bg-cover: no-repeat center/cover;
+
+    --fs-sub: 1.25rem;
+    --fs-small: 0.95rem;
+    --fs-med: 1.3rem;
+    --fs-big: 3rem;
+}
+
+body {
+    text-align: center;
+}
+
+p {
+    border-style: solid;
+}

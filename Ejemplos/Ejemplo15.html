@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!-- Crear cuenta en emailjs.com > crear servicio(add email) > crear plantilla jluismape@gmail.com -->
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso-JS | Reserva de Mesa</title>
+    <style>
+        :root {
+            --primary: #fff;
+            --secondary: #560bad;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --bg-gradient: linear-gradient(135deg, #7209b7, #f72585);
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg-gradient);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reservas-container {
+            max-width: 600px;
+            width: 90%;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(114, 9, 183, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .reservas-container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .reservas-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-grupo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 0.9rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #f8f9fa;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(114, 9, 183, 0.2);
+            background-color: #ffffff;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .submit-btn {
+            background: var(--bg-gradient);
+            color: #ffffff;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(114, 9, 183, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #f72585, #7209b7);
+            transform: scale(1.02);
+        }
+
+        .confirmacion {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-gradient);
+            color: #ffffff;
+            border-radius: 12px;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(247, 37, 133, 0.3);
+        }
+
+        .obligatorio {
+            color: var(--accent);
+            font-weight: 500;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="../img/logo-js.png">
+</head>
+
+<body>
+    <div class="reservas-container">
+        <h1>Reserva tu Mesa</h1>
+        <form id="reservasForm" class="reservas-form">
+            <div class="form-row">
+                <div class="form-grupo">
+                    <label for="nombre">Nombre completo <span class="obligatorio">*</span></label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="email">Correo electrónico <span class="obligatorio">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-grupo">
+                    <label for="telefono">Teléfono <span class="obligatorio">*</span></label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="personas">Número de personas <span class="obligatorio">*</span></label>
+                    <select id="personas" name="personas" required>
+                        <option value="">Seleccione...</option>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3-4">3-4 personas</option>
+                        <option value="5+">5 o más personas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-grupo">
+                    <label for="date">Fecha <span class="obligatorio">*</span></label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="time">Hora <span class="obligatorio">*</span></label>
+                    <input type="time" id="hora" name="hora" required>
+                </div>
+            </div>
+
+            <div class="form-grupo">
+                <label for="requisitos_especiales">Peticiones especiales</label>
+                <textarea id="requisitos_especiales" name="requisitos_especiales" rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Confirmar Reserva</button>
+        </form>
+
+        <div id="confirmacion" class="confirmacion">
+            <h2>¡Reserva Confirmada!</h2>
+            <p>Hemos enviado los detalles de tu reserva a tu correo electrónico.</p>
+        </div>
+    </div>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Inicializar EmailJS
+        (function () {
+            emailjs.init('YOUR_USER_ID'); // Reemplaza con tu User ID
+        })();
+
+        document.getElementById('reservasForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                personas: document.getElementById('personas').value,
+                fecha: document.getElementById('fecha').value,
+                hora: document.getElementById('hora').value,
+                requisitos_especiales: document.getElementById('requisitos_especiales').value
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+                to_email: 'restaurante@example.com',
+                subject: 'Nueva reserva - ' + formData.nombre,
+                message: `
+                    Nombre: ${formData.nombre}
+                    Email: ${formData.email}
+                    Teléfono: ${formData.telefono}
+                    Personas: ${formData.personas}
+                    Fecha: ${formData.fecha} a las ${formData.hora}
+                    Peticiones: ${formData.requisitos_especiales || 'Ninguna'}
+                `
+            })
+                .then(function (response) {
+                    console.log('CORRECTO!', response.status, response.text);
+                    document.getElementById('reservasForm').style.display = 'none';
+                    document.getElementById('confirmacion').style.display = 'block';
+                }, function (error) {
+                    console.log('Fallo...', error);
+                    alert('Error al enviar la reserva. Por favor, inténtalo de nuevo.');
+                });
+        });
+    </script>
+</body>
+
+</html>
