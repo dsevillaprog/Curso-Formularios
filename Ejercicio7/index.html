@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curso-JS | Catálogo de Productos</title>
+  <style>
+    /* Reset y básicos */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    /* Contenedor búsqueda */
+    .busqueda-container {
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+    }
+
+    .busqueda-container input {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
+
+    .busqueda-container input:focus {
+      outline: none;
+      border-color: #2980b9;
+      box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+    }
+
+    /* Contenedor productos */
+    .productos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Tarjeta producto */
+    .producto {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .producto:hover {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .producto img {
+      max-width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .producto-nombre {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #34495e;
+    }
+
+    .producto-precio {
+      font-size: 1rem;
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    /* Mensaje errors */
+    .error {
+      text-align: center;
+      color: #c0392b;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    /* Mensaje sin coincidencias */
+    .no-coincidencias {
+      text-align: center;
+      color: #555;
+      font-style: italic;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Catálogo de Productos</h1>
+
+  <div class="busqueda-container">
+    <input type="text" id="busqueda" placeholder="Buscar productos por nombre..."
+      aria-label="Buscar productos por nombre" />
+  </div>
+
+  <div class="productos-container" id="productos-container">
+    <!-- Productos se insertarán aquí -->
+  </div>
+  <div class="error" id="error-message"></div>
+  <div class="no-coincidencias" id="no-coincidencias" style="display:none;">No se encontraron productos que coincidan
+    con la búsqueda.</div>
+
+  <script>
+    // Función para convertir CSV a array de objetos
+    function csvToArray(str, delimiter = ',') {
+      const headers = str.slice(0, str.indexOf('\n')).split(delimiter).map(h => h.trim());
+      const rows = str.slice(str.indexOf('\n') + 1).split('\n').filter(row => row.trim() !== '');
+      const arr = rows.map(row => {
+        // Manejo para celdas que contienen el delimitador en contenido (como "59.99 €") se puede complicar,
+        // pero asumimos estructura simple sin comas internas.
+        const values = row.split(delimiter).map(v => v.trim());
+        const obj = {};
+        headers.forEach((header, i) => {
+          obj[header] = values[i];
+        });
+        return obj;
+      });
+      return arr;
+    }
+
+    let productosGlobal = [];
+
+    // Renderizar productos en el contenedor
+    function mostrarProductos(productos) {
+      const container = document.getElementById('productos-container');
+      const noCoincidenciasDiv = document.getElementById('no-coincidencias');
+      container.innerHTML = '';
+      if (!productos || productos.length === 0) {
+        noCoincidenciasDiv.style.display = 'block';
+        return;
+      }
+      noCoincidenciasDiv.style.display = 'none';
+      productos.forEach(producto => {
+        const card = document.createElement('div');
+        card.className = 'producto';
+
+        const img = document.createElement('img');
+        img.src = producto.foto;
+        img.alt = producto.nombre;
+        img.onerror = function () {
+          this.src = 'https://via.placeholder.com/300x180?text=Sin+imagen';
+        };
+
+        const nombre = document.createElement('div');
+        nombre.className = 'producto-nombre';
+        nombre.textContent = producto.nombre;
+
+        const precio = document.createElement('div');
+        precio.className = 'producto-precio';
+        precio.textContent = producto.precio;
+
+        card.appendChild(img);
+        card.appendChild(nombre);
+        card.appendChild(precio);
+
+        container.appendChild(card);
+      });
+    }
+
+    // Filtrar productos por texto
+    function filtrarProductos(texto) {
+      const filtro = texto.toLowerCase();
+      const productosFiltrados = productosGlobal.filter(p => p.nombre.toLowerCase().includes(filtro));
+      mostrarProductos(productosFiltrados);
+    }
+
+    // Cargar CSV y mostrar productos, guardar global
+    async function cargarProductos() {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = '';
+      try {
+        const response = await fetch('productos.csv');
+        if (!response.ok) {
+          throw new Error('No se pudo cargar el archivo CSV.');
+        }
+        const csvText = await response.text();
+        productosGlobal = csvToArray(csvText);
+        mostrarProductos(productosGlobal);
+      } catch (error) {
+        errorDiv.textContent = error.message;
+      }
+    }
+
+    document.getElementById('busqueda').addEventListener('input', e => {
+      filtrarProductos(e.target.value);
+    });
+
+    cargarProductos();
+  </script>
+</body>
+
+</html>
